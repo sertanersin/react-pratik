@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Yapilacaklar from "./Yapilacaklar";
 
 export default function App() {
   const [sayi, setSayi] = useState(0);
@@ -16,6 +17,9 @@ export default function App() {
       <button onClick={() => setSayi(sayi - adim)} disabled={sayi - adim < 0 }>Azalt</button>
       <button onClick={() => setSayi(sayi + adim)} disabled={sayi + adim > 10}>Artır</button>
       <button onClick={() => setSayi(0)}>Sıfırla</button>
+      <br/>
+      <br/>
+      <Yapilacaklar/>
     </div>
 
   );
