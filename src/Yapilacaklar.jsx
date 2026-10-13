@@ -8,6 +8,8 @@ export default function Yapilacaklar() {
   ]);
   const [yeniMetin, setYeniMetin] = useState("");
 
+  const [filtre, setFiltre] = useState("tumu");
+
   const ekle = () => {
     setGorevler([
       ...gorevler,
@@ -29,6 +31,12 @@ export default function Yapilacaklar() {
   };
   const tamamlananSayisi = gorevler.filter((gorev) => gorev.tamamlandi).length;
 
+  const gosterilenGorevler = gorevler.filter((gorev) => {
+    if (filtre === "aktif") return !gorev.tamamlandi;
+    if (filtre === "tamamlanan") return gorev.tamamlandi;
+    return true;
+  });
+
   return (
     <div>
       <h2>Yapılacaklar</h2>
@@ -45,9 +53,14 @@ export default function Yapilacaklar() {
       <button onClick={ekle} disabled={yeniMetin.trim() === ""}>
         Ekle
       </button>
+      <br />
+      <button onClick={() => setFiltre("tumu")}>Tümü</button>
+      <button onClick={() => setFiltre("aktif")}>Aktif</button>
+      <button onClick={() => setFiltre("tamamlanan")}>Tamamlanan</button>
+      <p>Seçili: {filtre}</p>
 
       <ul>
-        {gorevler.map((gorev) => (
+        {gosterilenGorevler.map((gorev) => (
           <li key={gorev.id}>
             <span
               style={{
