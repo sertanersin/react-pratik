@@ -27,10 +27,16 @@ export default function Yapilacaklar() {
       ),
     );
   };
+  const tamamlananSayisi = gorevler.filter((gorev) => gorev.tamamlandi).length;
 
   return (
     <div>
       <h2>Yapılacaklar</h2>
+      <br />
+      <p>
+        {tamamlananSayisi} / {gorevler.length} Tamamlandı
+      </p>
+      <br />
       <input
         type="text"
         onChange={(e) => setYeniMetin(e.target.value)}
