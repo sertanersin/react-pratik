@@ -1,4 +1,5 @@
 import { useState } from "react";
+import GorevItem from "./GorevItem";
 
 export default function Yapilacaklar() {
   const [gorevler, setGorevler] = useState([
@@ -61,19 +62,7 @@ export default function Yapilacaklar() {
 
       <ul>
         {gosterilenGorevler.map((gorev) => (
-          <li key={gorev.id}>
-            <span
-              style={{
-                textDecoration: gorev.tamamlandi ? "line-through" : "none",
-              }}
-            >
-              {gorev.metin}
-            </span>
-            <button onClick={() => tamamla(gorev.id)}>
-              {gorev.tamamlandi ? "Geri Al" : "Tamamla"}
-            </button>
-            <button onClick={() => sil(gorev.id)}>Sil</button>
-          </li>
+          <GorevItem key={gorev.id} gorev={gorev} tamamla={tamamla} sil={sil} />
         ))}
       </ul>
     </div>
