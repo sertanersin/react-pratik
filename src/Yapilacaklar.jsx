@@ -1,5 +1,6 @@
 import { useState } from "react";
 import GorevItem from "./GorevItem";
+import FiltreButonlari from "./FiltreButonlari";
 
 export default function Yapilacaklar() {
   const [gorevler, setGorevler] = useState([
@@ -55,10 +56,7 @@ export default function Yapilacaklar() {
         Ekle
       </button>
       <br />
-      <button onClick={() => setFiltre("tumu")}>Tümü</button>
-      <button onClick={() => setFiltre("aktif")}>Aktif</button>
-      <button onClick={() => setFiltre("tamamlanan")}>Tamamlanan</button>
-      <p>Seçili: {filtre}</p>
+      <FiltreButonlari filtre={filtre} setFiltre={setFiltre}/>
 
       <ul>
         {gosterilenGorevler.map((gorev) => (
